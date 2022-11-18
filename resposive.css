@@ -1,0 +1,145 @@
+@media screen and (max-width:600px){
+   
+    /*===NAV BAR===*/
+   
+    .navbar .navbar_right .navbar_right-list li:nth-child(1){
+        display: none;
+    }
+    .navbar .navbar_right .navbar_right-list li:nth-child(2){
+        display: none;
+    }
+    .navbar .navbar_right .navbar_right-list li:nth-child(3){
+        display: none;
+    }
+    .navbar .navbar_right .navbar_right-list li:nth-child(4){
+        display: none;
+    }
+    .navbar .navbar_right .navbar_right-list li:nth-child(5){
+        display: block;
+    }
+
+    /*===Hero section===*/
+
+    .h_section{
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .h_section .h_section-left h1{
+        font-size: 2.5rem;
+    }
+    .h_section .h_section-left button{
+        margin: 24px auto 48px;
+        width: 100%;
+    }
+
+    /*==Companies section==*/
+
+    .com_section .logo_section{
+        width: 100%;
+        height: 35px;
+    }
+    .com_section .content{
+        font-size: 14px;
+        margin-top: 120px;
+    }
+
+    /*==Branding section==*/
+
+    .b_section {
+        flex-direction: column-reverse;
+    }
+
+    .b_section .text_section h2{
+        text-align: center;
+        font-size: 32px;
+    }
+
+    .b_section .text_section p{
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .b_section .text_section i.desktop{
+        display: none;
+    }
+    
+    .b_section .text_section i.mobile{
+         display: block;
+         text-align: center;  
+    }
+
+     /*==custom_ section==*/
+
+     .cus_section{
+        flex-direction: column;
+     }
+
+     .cus_section .text_cus-section h3{
+        text-align: center;
+        font-size: 32px;
+     }
+
+     .cus_section .text_cus-section p{
+        font-size: 14px;
+        text-align: center;
+     }
+     .cus_section .text_cus-section i.desktop{
+        display: none;
+     }
+     .cus_section .text_cus-section i.mobile{
+        display: block;
+         text-align: center;  
+     }
+
+     
+ /*==testimonial section==*/
+
+ .tes_section .information_section{
+    flex-direction: column;
+ }
+ .tes_section .information_section .inf_section-item{
+    width: 100%;
+    margin-bottom: 20px;
+ }
+ .tes_section .mid_section{
+    font-size: 29px;
+    text-align: center;
+ }
+ .tes_section .top_section{
+    font-size: 12px;
+ }
+ /*==contact section==*/
+ .con_section .con_section-left img{
+    display: none;
+ }
+ .con_section .con_section-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ }
+ .con_section .con_section-right h2{
+    font-size: 45px;
+    text-align: center;
+    margin: 50px auto 30px;
+ }
+ .con_section .con_section-right p{
+    font-size: 16px;
+    text-align: center;
+    margin-top: 2px;
+    margin-bottom: 48px;
+ }
+
+ /*==footer==*/
+ .footer .content{
+    flex-direction: column;
+ }
+ .footer{
+    text-align: center;
+ }
+ .footer .end{
+    margin-top: 90px;
+ }
+.footer .content h1{
+    margin-top: 70px;
+}
