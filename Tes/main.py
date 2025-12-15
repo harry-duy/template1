@@ -15,7 +15,7 @@ API_URL = "http://127.0.0.1:5000"
 
 
 # ============================================================
-# MAIN APP (AES + RSA)
+# MAIN APP (AES + DES + Triple DES + RSA)
 # ============================================================
 class MainApp(QMainWindow):
     def __init__(self):
@@ -61,17 +61,25 @@ class MainApp(QMainWindow):
             f.write(content)
 
     # ========================================================
-    # SWITCH
+    # SWITCH ALGORITHM
     # ========================================================
     def encrypt(self):
         if self.ui.radioAES.isChecked():
             self.aes_encrypt()
+        elif self.ui.radioDES.isChecked():
+            self.des_encrypt()
+        elif self.ui.radioTripleDES.isChecked():
+            self.triple_des_encrypt()
         elif self.ui.radioRSA.isChecked():
             self.rsa_encrypt()
 
     def decrypt(self):
         if self.ui.radioAES.isChecked():
             self.aes_decrypt()
+        elif self.ui.radioDES.isChecked():
+            self.des_decrypt()
+        elif self.ui.radioTripleDES.isChecked():
+            self.triple_des_decrypt()
         elif self.ui.radioRSA.isChecked():
             self.rsa_decrypt()
 
@@ -79,12 +87,33 @@ class MainApp(QMainWindow):
     # AES
     # ========================================================
     def aes_encrypt(self):
-        self.call_api_file_crypto("/api/aes/encrypt")
+        self.call_api_file_crypto("/api/aes/encrypt", "AES")
 
     def aes_decrypt(self):
-        self.call_api_file_crypto("/api/aes/decrypt")
+        self.call_api_file_crypto("/api/aes/decrypt", "AES")
 
-    def call_api_file_crypto(self, endpoint):
+    # ========================================================
+    # DES
+    # ========================================================
+    def des_encrypt(self):
+        self.call_api_file_crypto("/api/des/encrypt", "DES")
+
+    def des_decrypt(self):
+        self.call_api_file_crypto("/api/des/decrypt", "DES")
+
+    # ========================================================
+    # TRIPLE DES
+    # ========================================================
+    def triple_des_encrypt(self):
+        self.call_api_file_crypto("/api/3des/encrypt", "Triple DES")
+
+    def triple_des_decrypt(self):
+        self.call_api_file_crypto("/api/3des/decrypt", "Triple DES")
+
+    # ========================================================
+    # GENERIC FILE CRYPTO (AES, DES, 3DES)
+    # ========================================================
+    def call_api_file_crypto(self, endpoint, algo_name):
         infile = self.ui.txtInput.text().strip()
         outfile = self.ui.txtOutput.text().strip()
         key = self.ui.txtKey.text().strip()
@@ -94,7 +123,7 @@ class MainApp(QMainWindow):
             return
 
         if not key:
-            QMessageBox.warning(self, "Error", "AES key required")
+            QMessageBox.warning(self, "Error", f"{algo_name} key required")
             return
 
         url = API_URL + endpoint
@@ -104,7 +133,7 @@ class MainApp(QMainWindow):
         try:
             r = requests.post(url, files=files, data=data)
             if r.status_code == 200:
-                QMessageBox.information(self, "Success", "AES Done!")
+                QMessageBox.information(self, "Success", f"{algo_name} Done!")
             else:
                 QMessageBox.warning(self, "Error", r.text)
         except Exception as e:
@@ -158,22 +187,25 @@ class MainApp(QMainWindow):
             QMessageBox.critical(self, "Error", str(e))
 
     # ========================================================
-    # KEY
+    # KEY MANAGEMENT
     # ========================================================
     def save_key(self):
         key = self.ui.txtKey.text().strip()
         if not key:
+            QMessageBox.warning(self, "Warning", "Key is empty!")
             return
         path, _ = QFileDialog.getSaveFileName(self, "Save key", filter="*.key")
         if path:
             with open(path, "w") as f:
                 f.write(key)
+            QMessageBox.information(self, "Success", "Key saved!")
 
     def load_key(self):
         path, _ = QFileDialog.getOpenFileName(self, "Load key", filter="*.key")
         if path:
             with open(path, "r") as f:
                 self.ui.txtKey.setText(f.read().strip())
+            QMessageBox.information(self, "Success", "Key loaded!")
 
     # ========================================================
     # RSA WINDOW
@@ -230,4 +262,4 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     w = MainApp()
     w.show()
-    sys.exit(app.exec_())
+    sys.exit(app.exec())

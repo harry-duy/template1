@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 from PyQt5 import QtCore, QtGui, QtWidgets
-
-# Import đúng UI của RSA
 from UI.RSASettings import Ui_RSAWindow
 
 
@@ -22,20 +20,28 @@ class Ui_MainWindow(object):
 
         # ================= ALGORITHM BOX =================
         self.groupAlgo = QtWidgets.QGroupBox(self.centralwidget)
-        self.groupAlgo.setGeometry(QtCore.QRect(40, 70, 200, 120))
+        self.groupAlgo.setGeometry(QtCore.QRect(40, 70, 200, 160))
         self.groupAlgo.setTitle("Algorithm")
 
+        # AES
         self.radioAES = QtWidgets.QRadioButton(self.groupAlgo)
         self.radioAES.setGeometry(QtCore.QRect(20, 30, 100, 20))
         self.radioAES.setChecked(True)
         self.radioAES.setText("AES")
 
+        # DES
         self.radioDES = QtWidgets.QRadioButton(self.groupAlgo)
         self.radioDES.setGeometry(QtCore.QRect(20, 60, 100, 20))
         self.radioDES.setText("DES")
 
+        # Triple DES
+        self.radioTripleDES = QtWidgets.QRadioButton(self.groupAlgo)
+        self.radioTripleDES.setGeometry(QtCore.QRect(20, 90, 120, 20))
+        self.radioTripleDES.setText("Triple DES")
+
+        # RSA
         self.radioRSA = QtWidgets.QRadioButton(self.groupAlgo)
-        self.radioRSA.setGeometry(QtCore.QRect(20, 90, 100, 20))
+        self.radioRSA.setGeometry(QtCore.QRect(20, 120, 100, 20))
         self.radioRSA.setText("RSA")
 
         # Khi chọn RSA → mở cửa sổ RSA
@@ -102,9 +108,4 @@ class Ui_MainWindow(object):
             self.rsawin = QtWidgets.QMainWindow()
             self.rsaui = Ui_RSAWindow()
             self.rsaui.setupUi(self.rsawin)
-
-            # ⚠ Không cần connect generate_rsa_keys nữa
-            # Vì nút Generate đã được xử lý bên RSASettings.py
-            # self.rsaui.btnGenerate.clicked.connect(self.generate_rsa_keys)
-
             self.rsawin.show()
