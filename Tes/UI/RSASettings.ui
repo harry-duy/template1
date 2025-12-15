@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>RSASettings</class>
+ <widget class="QDialog" name="RSASettings">
+  <property name="geometry">
+   <rect><x>0</x><y>0</y><width>420</width><height>420</height></rect>
+  </property>
+  <property name="windowTitle">
+   <string>RSA Settings</string>
+  </property>
+
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect><x>20</x><y>20</y><width>380</width><height>360</height></rect>
+   </property>
+
+   <layout class="QVBoxLayout" name="verticalLayout">
+
+    <!-- Title -->
+    <item>
+     <widget class="QLabel" name="labelTitle">
+      <property name="text">
+       <string>RSA Key Settings</string>
+      </property>
+      <property name="font">
+       <font><pointsize>14</pointsize><bold>true</bold></bold></font>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+
+    <!-- p -->
+    <item>
+     <layout class="QHBoxLayout" name="layoutP">
+      <item>
+       <widget class="QLabel" name="labelP">
+        <property name="text">
+         <string>Prime p:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="txtP"/>
+      </item>
+     </layout>
+    </item>
+
+    <!-- q -->
+    <item>
+     <layout class="QHBoxLayout" name="layoutQ">
+      <item>
+       <widget class="QLabel" name="labelQ">
+        <property name="text">
+         <string>Prime q:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="txtQ"/>
+      </item>
+     </layout>
+    </item>
+
+    <!-- n -->
+    <item>
+     <layout class="QHBoxLayout" name="layoutN">
+      <item>
+       <widget class="QLabel" name="labelN">
+        <property name="text">
+         <string>n = p × q:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="txtN">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+
+    <!-- phi(n) -->
+    <item>
+     <layout class="QHBoxLayout" name="layoutPhi">
+      <item>
+       <widget class="QLabel" name="labelPhi">
+        <property name="text">
+         <string>φ(n):</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="txtPhi">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+
+    <!-- e -->
+    <item>
+     <layout class="QHBoxLayout" name="layoutE">
+      <item>
+       <widget class="QLabel" name="labelE">
+        <property name="text">
+         <string>Public Key e:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="txtE"/>
+      </item>
+     </layout>
+    </item>
+
+    <!-- d -->
+    <item>
+     <layout class="QHBoxLayout" name="layoutD">
+      <item>
+       <widget class="QLabel" name="labelD">
+        <property name="text">
+         <string>Private Key d:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="txtD"/>
+      </item>
+     </layout>
+    </item>
+
+    <!-- Buttons -->
+    <item>
+     <layout class="QHBoxLayout" name="layoutButtons">
+      <item>
+       <widget class="QPushButton" name="btnGenerate">
+        <property name="text">
+         <string>Generate Keys</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnSave">
+        <property name="text">
+         <string>Save</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnCancel">
+        <property name="text">
+         <string>Cancel</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+
+   </layout>
+
+  </widget>
+
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
